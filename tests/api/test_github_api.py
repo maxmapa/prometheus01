@@ -1,5 +1,5 @@
 import pytest
-from modules.api.clients.github inport Github
+from modules.api.clients.github import Github
 
 @pytest.mark.api
 def test_user_exists():
