@@ -1,5 +1,5 @@
 import pytest
-
+from modules.api.clients.gihub import GitHub
 
 class User:
 
