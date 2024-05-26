@@ -48,8 +48,8 @@ def test_specific_emoji_exists(github_api):
         print("There is no emoji for the flag of Ukraine")
         
         
-@pytest.mark.api
-def test_print_all_emojis(github_api):
-    emojis = github_api.get_emojis('')
-    print(emojis)
-    # assert False, "Printed all emojis for verification"
+# @pytest.mark.api
+# def test_print_all_emojis(github_api):
+    # emojis = github_api.get_emojis('')
+    # print(emojis)
+    # # assert False, "Printed all emojis for verification"
