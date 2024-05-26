@@ -48,4 +48,4 @@ def test_emoji_list_not_empty(github_api):
 def test_print_all_emojis(github_api):
     emojis = github_api.get_emojis('')
     print(emojis)
-    assert False, "Printed all emojis for verification"
+    # assert False, "Printed all emojis for verification"
