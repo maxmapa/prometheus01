@@ -41,5 +41,5 @@ def test_emoji_list_not_empty(github_api):
 
 @pytest.mark.api
 def test_specific_emoji_exists(github_api):
-    emojis = github_api.get_emojis()
+    r = github_api.get_emojis('ukraine')
     assert 'ukraine' in emojis, "The emoji 'ukraine' should exist in the list"
