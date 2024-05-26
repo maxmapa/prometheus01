@@ -44,7 +44,7 @@ def test_emoji_list_not_empty(github_api):
 def test_specific_emoji_exists(github_api):
     emojis = github_api.get_emojis('')
     if 'ukraine' in emojis:
-        print(f"URL is {emojis['ukraine']})
+        print("URL is ", emojis['ukraine'])
     else:
         print("There is no emoji for the flag of Ukraine")
         
