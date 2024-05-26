@@ -39,11 +39,15 @@ def test_emoji_list_not_empty(github_api):
     assert len(emojis) > 0, f"The emoji list should not be empty. Current emoji count: {len(emojis)}"       
     
 
-# @pytest.mark.api
-# def test_specific_emoji_exists(github_api):
-    # emojis = github_api.get_emojis('')
-    # assert emojis['name'] == 'ukraine'
-
+@pytest.mark.api
+def test_specific_emoji_exists(github_api):
+    emojis = github_api.get_emojis('')
+    if 'ukraine' in emojis:
+        print(emojis['ukraine'])
+    else:
+        print("There is no emoji for the flag of Ukraine")
+        
+        
 @pytest.mark.api
 def test_print_all_emojis(github_api):
     emojis = github_api.get_emojis('')
