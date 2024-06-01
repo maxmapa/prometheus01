@@ -48,6 +48,15 @@ def test_specific_emoji_exists(github_api):
     else:
         print("There is no emoji for the flag of Ukraine")
         
+@pytest.mark.api
+def test_second_emoji_request():
+    r = requests.get('https://api.github.com/users/defunkt')
+    body = r.json()
+    headers = r.headers
+
+    assert body['name'] == 'germany'
+    assert r.status_code == 200       
+        
         
 # @pytest.mark.api
 # def test_print_all_emojis(github_api):
