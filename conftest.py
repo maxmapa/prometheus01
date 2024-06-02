@@ -26,8 +26,8 @@ def user():
 
     user.remove()
 
-
 @pytest.fixture
 def github_api():
-    api = GitHub()
+    token = "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"
+    api = GitHub(token)
     yield api

@@ -26,7 +26,6 @@ def test_repo_cannot_be_found(github_api):
     r = github_api.search_repo('sergiibutenko_repo_non_exist')
     assert r['total_count'] == 0
     
-
  
 @pytest.mark.api
 def test_repo_with_single_char_be_found(github_api):
@@ -42,65 +41,70 @@ def test_emoji_list_not_empty(github_api):
     
 
 @pytest.mark.api
-def test_specific_emoji_exists(github_api):
+def test_country_emoji_flag(github_api):
     emojis = github_api.get_emojis('')
     eu = [
-        "austria",
-        "belgium",
-        "bulgaria",
-        "croatia",
-        "cyprus",
-        "czech republic",
-        "denmark",
-        "estonia",
-        "finland",
-        "france",
-        "germany",
-        "greece",
-        "hungary",
-        "ireland",
-        "italy",
-        "latvia",
-        "lithuania",
-        "luxembourg",
-        "malta",
-        "netherlands",
-        "poland",
-        "portugal",
-        "romania",
-        "slovakia",
-        "slovenia",
-        "spain",
-        "sweden",
-        "ukraine"
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech_Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Ukraine"
     ]
 
-    missing_countries = [country for country in eu if country not in emojis]
+    missing_countries = [country for country in eu if country.lower() not in emojis]
 
     if missing_countries:
-        for country in missing_countries:
-            print(country, "is not in emojis")
-        assert False, f"Missing countries: {', '.join(missing_countries)}"
+        assert False, f"Missing {len(missing_countries)} countries: {', '.join(missing_countries)}"
     else:
         assert True
 
-    # if 'ukraine' in emojis:
-        # print("URL is ", emojis['ukraine'])
-    # else:
-        # print("There is no emoji for the flag of Ukraine")
-        
-# @pytest.mark.api
-# def test_second_emoji_request(github_api):
-    # emojis = github_api.get_emojis('')
-    # body = r.json()
-    # headers = r.headers
 
-    # assert body['germany'] == True
-    # assert r.status_code == 200 if 'germany' in emojis       
-        
-        
-# @pytest.mark.api
-# def test_print_all_emojis(github_api):
-    # emojis = github_api.get_emojis('')
-    # print(emojis)
-    # # assert False, "Printed all emojis for verification"
+@pytest.mark.api
+def test_get_commits(github_api):
+    owner = "maxmapa"
+    repo = "prometheus01"
+    commits = github_api.get_commits(owner, repo)
+    
+    assert isinstance(commits, list)
+    assert len(commits) > 0  # Ensure that there is at least one commit
+    assert 'sha' in commits[0]
+    assert 'commit' in commits[0]
+
+@pytest.mark.api
+def test_get_specific_commit(github_api):
+    owner = "maxmapa"
+    repo = "prometheus01"
+    commits = github_api.get_commits(owner, repo)
+    
+    # Assuming there is at least one commit
+    assert len(commits) > 0
+    
+    commit_sha = commits[0]['sha']
+    commit = github_api.get_commit(owner, repo, commit_sha)
+    
+    assert commit['sha'] == commit_sha
+    assert 'commit' in commit
+    assert 'author' in commit
