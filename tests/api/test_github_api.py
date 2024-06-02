@@ -45,44 +45,44 @@ def test_emoji_list_not_empty(github_api):
 def test_specific_emoji_exists(github_api):
     emojis = github_api.get_emojis('')
     eu = [
-    "austria",
-    "belgium",
-    "bulgaria",
-    "croatia",
-    "cyprus",
-    "czech republic",
-    "denmark",
-    "estonia",
-    "finland",
-    "france",
-    "germany",
-    "greece",
-    "hungary",
-    "ireland",
-    "italy",
-    "latvia",
-    "lithuania",
-    "luxembourg",
-    "malta",
-    "netherlands",
-    "poland",
-    "portugal",
-    "romania",
-    "slovakia",
-    "slovenia",
-    "spain",
-    "sweden",
-    "ukraine"
-]
+        "austria",
+        "belgium",
+        "bulgaria",
+        "croatia",
+        "cyprus",
+        "czech republic",
+        "denmark",
+        "estonia",
+        "finland",
+        "france",
+        "germany",
+        "greece",
+        "hungary",
+        "ireland",
+        "italy",
+        "latvia",
+        "lithuania",
+        "luxembourg",
+        "malta",
+        "netherlands",
+        "poland",
+        "portugal",
+        "romania",
+        "slovakia",
+        "slovenia",
+        "spain",
+        "sweden",
+        "ukraine"
+    ]
+
     missing_countries = [country for country in eu if country not in emojis]
 
     if missing_countries:
         for country in missing_countries:
             print(country, "is not in emojis")
-        return None
+        assert False, f"Missing countries: {', '.join(missing_countries)}"
     else:
-        assert r.status_code == 200
-print(test_specific_emoji_exists(missing_countries))
+        assert True
 
     # if 'ukraine' in emojis:
         # print("URL is ", emojis['ukraine'])
