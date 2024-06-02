@@ -82,7 +82,7 @@ def test_specific_emoji_exists(github_api):
         return None
     else:
         assert r.status_code == 200
-print(test_specific_emoji_exists(github_api))
+print(test_specific_emoji_exists(missing_countries))
 
     # if 'ukraine' in emojis:
         # print("URL is ", emojis['ukraine'])
