@@ -79,7 +79,7 @@ def test_specific_emoji_exists(github_api):
     if missing_countries:
         for country in missing_countries:
             print(country, "is not in emojis")
-        return False
+        return None
     else:
         assert r.status_code == 200
 #print(test_specific_emoji_exists())
