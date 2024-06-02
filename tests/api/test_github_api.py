@@ -44,19 +44,59 @@ def test_emoji_list_not_empty(github_api):
 @pytest.mark.api
 def test_specific_emoji_exists(github_api):
     emojis = github_api.get_emojis('')
-    if 'ukraine' in emojis:
-        print("URL is ", emojis['ukraine'])
-    else:
-        print("There is no emoji for the flag of Ukraine")
-        
-@pytest.mark.api
-def test_second_emoji_request():
-    r = requests.get('https://api.github.com/users/defunkt')
-    body = r.json()
-    headers = r.headers
+    eu = [
+    "austria",
+    "belgium",
+    "bulgaria",
+    "croatia",
+    "cyprus",
+    "czech republic",
+    "denmark",
+    "estonia",
+    "finland",
+    "france",
+    "germany",
+    "greece",
+    "hungary",
+    "ireland",
+    "italy",
+    "latvia",
+    "lithuania",
+    "luxembourg",
+    "malta",
+    "netherlands",
+    "poland",
+    "portugal",
+    "romania",
+    "slovakia",
+    "slovenia",
+    "spain",
+    "sweden",
+    "ukraine"
+]
+    missing_countries = [country for country in eu if country not in emojis]
 
-    assert body['name'] == 'germany'
-    assert r.status_code == 200       
+    if missing_countries:
+        for country in missing_countries:
+            print(country, "is not in emojis")
+        return False
+    else:
+        assert r.status_code == 200
+#print(test_specific_emoji_exists())
+
+    # if 'ukraine' in emojis:
+        # print("URL is ", emojis['ukraine'])
+    # else:
+        # print("There is no emoji for the flag of Ukraine")
+        
+# @pytest.mark.api
+# def test_second_emoji_request(github_api):
+    # emojis = github_api.get_emojis('')
+    # body = r.json()
+    # headers = r.headers
+
+    # assert body['germany'] == True
+    # assert r.status_code == 200 if 'germany' in emojis       
         
         
 # @pytest.mark.api

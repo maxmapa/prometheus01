@@ -1,13 +1,3 @@
-import sys
-import io
-
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
-
-#chcp.com 65001
-#export PYTHONENCODING=UTF-8
-
-
 import pytest
 import requests
 
@@ -20,7 +10,6 @@ def test_first_request():
 @pytest.mark.http
 def test_second_request():
     r = requests.get('https://api.github.com/users/defunkt')
-    print(r.text)
     body = r.json()
     headers = r.headers
 
