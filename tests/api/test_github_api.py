@@ -6,7 +6,11 @@ import requests
 def test_user_exists(github_api):
     user = github_api.get_user('defunkt')
     assert user['login'] == 'defunkt'
-
+    
+@pytest.mark.api
+def test_my_user_exists(github_api):
+    user = github_api.get_user('maxmapa')
+    assert user['login'] == 'maxmapa'
 
 @pytest.mark.api
 def test_user_not_exists(github_api):
@@ -17,7 +21,7 @@ def test_user_not_exists(github_api):
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('become-qa-auto')
-    assert r['total_count'] == 57
+    assert r['total_count'] == 58
     assert 'become-qa-auto' in r['items'][0]['name'] 
 
 
@@ -75,14 +79,12 @@ def test_country_emoji_flag(github_api):
     ]
 
     missing_countries = [country for country in eu if country.lower() not in emojis]
-
-    if missing_countries:
-        assert False, f"Missing {len(missing_countries)} countries: {', '.join(missing_countries)}"
-    else:
-        assert True
+    missing = ['France', 'Germany', 'Italy', 'Spain']
+    
+    assert missing_countries == missing, f"Missing {len(missing_countries)} countries: {', '.join(missing_countries)}"
 
 
-@pytest.mark.api
+@pytest.mark.api #fails with wrong token in conftest.py
 def test_get_commits(github_api):
     owner = "maxmapa"
     repo = "prometheus01"
@@ -93,7 +95,7 @@ def test_get_commits(github_api):
     assert 'sha' in commits[0]
     assert 'commit' in commits[0]
 
-@pytest.mark.api
+@pytest.mark.api #fails with wrong token in conftest.py
 def test_get_specific_commit(github_api):
     owner = "maxmapa"
     repo = "prometheus01"

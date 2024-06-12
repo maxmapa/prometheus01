@@ -28,6 +28,6 @@ def user():
 
 @pytest.fixture
 def github_api():
-    token = input("")
+    token = "token"
     api = GitHub(token)
     yield api
