@@ -86,8 +86,8 @@ def test_country_emoji_flag(github_api):
 
 @pytest.mark.api #fails with wrong token in conftest.py
 def test_get_commits(github_api):
-    owner = "maxmapa"
-    repo = "prometheus01"
+    owner = "noname"
+    repo = "repo01"
     commits = github_api.get_commits(owner, repo)
     
     assert isinstance(commits, list)
@@ -97,8 +97,8 @@ def test_get_commits(github_api):
 
 @pytest.mark.api #fails with wrong token in conftest.py
 def test_get_specific_commit(github_api):
-    owner = "maxmapa"
-    repo = "prometheus01"
+    owner = "noname"
+    repo = "repo01"
     commits = github_api.get_commits(owner, repo)
     
     # Assuming there is at least one commit
