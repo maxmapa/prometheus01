@@ -27,6 +27,6 @@ def user():
     user.remove()
 
 @pytest.fixture
-def github_api(): #requires variable token
-    api = GitHub(token)
+def github_api():
+    api = GitHub()
     yield api

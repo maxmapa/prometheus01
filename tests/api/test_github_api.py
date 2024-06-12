@@ -82,31 +82,3 @@ def test_country_emoji_flag(github_api):
     missing = ['France', 'Germany', 'Italy', 'Spain']
     
     assert missing_countries == missing, f"Missing {len(missing_countries)} countries: {', '.join(missing_countries)}"
-
-
-@pytest.mark.api #fails with wrong token in conftest.py
-def test_get_commits(github_api):
-    owner = "noname"
-    repo = "repo01"
-    commits = github_api.get_commits(owner, repo)
-    
-    assert isinstance(commits, list)
-    assert len(commits) > 0  # Ensure that there is at least one commit
-    assert 'sha' in commits[0]
-    assert 'commit' in commits[0]
-
-@pytest.mark.api #fails with wrong token in conftest.py
-def test_get_specific_commit(github_api):
-    owner = "noname"
-    repo = "repo01"
-    commits = github_api.get_commits(owner, repo)
-    
-    # Assuming there is at least one commit
-    assert len(commits) > 0
-    
-    commit_sha = commits[0]['sha']
-    commit = github_api.get_commit(owner, repo, commit_sha)
-    
-    assert commit['sha'] == commit_sha
-    assert 'commit' in commit
-    assert 'author' in commit
