@@ -12,7 +12,7 @@ def test_dialog_before_you_continue_to_YouTube():
 
     # Відкриваємо сторінку YouTube каналу
     driver.get("https://www.youtube.com/@Prometheus_Ukraine")
-    # Проходимо діалог щодо куків
+    # Handle the cookie consent
     try:
         driver.find_element(By.XPATH, "//span[contains(text(),'Reject all')]").click()
     except:
@@ -34,7 +34,7 @@ def test_subscribe_dialog():
 
     # Відкриваємо сторінку YouTube каналу
     driver.get("https://www.youtube.com/@Prometheus_Ukraine")
-    # Проходимо діалог щодо куків
+    # Handle the cookie consent
     try:
         driver.find_element(By.XPATH, "//span[contains(text(),'Reject all')]").click()
     except:
