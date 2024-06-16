@@ -22,4 +22,6 @@ update_database.py<br>
 conftest.py<br>
 pytest.ini<br>
 chromedriver.exe
-
+<br><br>
+Feature 4<br>
+QAAUTO101 and PDS101 certificates of completion
