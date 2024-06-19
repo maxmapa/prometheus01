@@ -32,6 +32,7 @@ def test_product_qnt_udate():
     water_qnt = db.select_product_qnt_by_id(1)
     
     assert water_qnt[0][0] == 25
+
     
 @pytest.mark.database
 def test_product_insert():
@@ -40,6 +41,7 @@ def test_product_insert():
     cookie_qnt = db.select_product_qnt_by_id(4)
 
     assert cookie_qnt[0][0] == 30    
+
     
 @pytest.mark.database
 def test_product_delete():
@@ -49,6 +51,7 @@ def test_product_delete():
     qnt = db.select_product_qnt_by_id(99)
 
     assert len(qnt) == 0    
+
     
 @pytest.mark.database
 def test_detailed_orders():

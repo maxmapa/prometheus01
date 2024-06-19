@@ -2,6 +2,7 @@ import requests
 
 
 class GitHub:
+
     def __init__(self):
         self.base_url = "https://api.github.com"
 
@@ -12,17 +13,14 @@ class GitHub:
         return body
 
     def search_repo(self, name):
-        r = requests.get(
-            "https://api.github.com/search/repositories",
-            params={"q": name}
-        )
+        r = requests.get("https://api.github.com/search/repositories",
+                         params={"q": name})
         body = r.json()
 
         return body
-        
-    def get_emojis(self, emojis):
+
+    def get_emoji(self, emoji):
         r = requests.get("https://api.github.com/emojis")
         body = r.json()
 
         return body
-

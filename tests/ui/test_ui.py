@@ -19,7 +19,7 @@ def test_check_incorrect_username():
     login_elem = driver.find_element(By.ID, "login_field")
 
     # Вводимо неправильне ім'я користувача або поштову адрІесу
-    login_elem.send_keys("sergiibutenko@mistakeinemail.com")
+    login_elem.send_keys("user@mistakeinemail.com")
     
     # Знаходимо поле, в яке будемо вводити неправильний пароль
     pass_elem = driver.find_element(By.ID, "password")
