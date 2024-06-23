@@ -16,7 +16,7 @@ def test_incorrect_username_login():
 
 
 @pytest.mark.ui
-def test_goto_signup_page():
+def test_goto_signup_page(): # when login fails
     sign_in_page = SignInPage()
 
     sign_in_page.go_to()
