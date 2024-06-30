@@ -1,0 +1,34 @@
+Error! C - Adriana made a mistake for Id: AT037645
+assert 4.0 >= 5
+Error! C - Max made a mistake for Id: AT037760
+assert 5.0 < 5
+Error! C - Jo?o Oliveira made a mistake for Id: AT037967
+assert 3.0 >= 5
+Error! C - Jo?o Oliveira made a mistake for Id: AT038009
+assert 4.0 >= 5
+Error! C - Adriana made a mistake for Id: AT038420
+assert 4.0 >= 5
+Error! C - Adriana made a mistake for Id: AT038428
+assert 4.0 >= 5
+Error! C - Adriana made a mistake for Id: AT038429
+assert 4.0 >= 5
+Error! C - Jo?o Oliveira made a mistake for Id: AT039204
+assert 5.0 < 5
+Colina! C - Jo?o Oliveira made a mistake for Id: AT037433
+assert (0.0 == 0.0 and 8.0 == 0.0)
+ATT! C - Max made a mistake for Id: AT037715
+assert 10.0 == 0.0
+Night rate! C - Adriana made a mistake for Id: AT034841
+assert (65.0 != 65.0)
+Night rate! C - Adriana made a mistake for Id: AT035518
+assert (65.0 != 65.0)
+Night rate! C - Adriana made a mistake for Id: AT033347
+assert (55.0 != 65.0 and 55.0 != 55.0)
+Night rate! C - Adriana made a mistake for Id: AT035323
+assert (65.0 != 65.0)
+Night rate! C - Adriana made a mistake for Id: AT037633
+assert (65.0 != 65.0)
+Night rate! C - Adriana made a mistake for Id: AT034172
+assert (65.0 != 65.0)
+Night rate! C - made a mistake for Id: AT037340
+assert (55.0 != 65.0 and 55.0 != 55.0)

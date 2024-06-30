@@ -1,5 +1,5 @@
 # Introduction
-This Python project is a part of the QAAUTO101 course (QA Auto Tester) created by Sergiy Butenko (GlobalLogic) on the Prometheus.org.ua platform.
+This repo is a part of the QAAUTO101 course (QA Auto Tester) created by Sergiy Butenko (GlobalLogic) on the Prometheus.org.ua platform.
 
 **Feature 1**  
 QA Auto Tester Practice
