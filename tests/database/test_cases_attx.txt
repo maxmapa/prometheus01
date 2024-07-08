@@ -1,0 +1,119 @@
+Test Case: Verify Database Connection
+Test ID: TC-01
+Test Name: Verify Database Connection
+Description: Verify that the database connection can be successfully established.
+
+Preconditions:
+
+Access to the ATT database.
+The database is up and running.
+Test Steps:
+
+Initialize the database connection using the ATT() class.
+Call the test_connection() method to test the connection to the database.
+Expected Result:
+
+The connection to the database is successfully established without any errors or exceptions.
+Example After Testing:
+
+Actual Result:
+
+The connection to the database was successfully established.
+Status: Passed
+
+
+Test Case: Verify Passenger Count by Class
+Test ID: TC-02
+Test Name: Verify Correctness of Passenger Count for Each Class
+Description: Verify that the total number of passengers (adults, children, and infants) meets the conditions specified for each class.
+
+Preconditions:
+
+Access to a database containing passenger information.
+Passenger data includes fields: ID, Class, Adults, Children, Infants, Province.
+Test Steps:
+
+Retrieve passenger data from the database.
+For each record, check that the values for adults (Adults), children (Children), and infants (Infants) are not None. If they are None, set the value to 0.
+Calculate the total number of passengers as the sum of adults, children, and infants.
+Verify that the total number of passengers meets the conditions of the class:
+If the class is "1-3PAX", the total number of passengers should be less than 4.
+If the class is "4-8PAX", the total number of passengers should be 4 or more.
+If the class is "1 - 4 Pax", the total number of passengers should be less than 5.
+If the class is "5 - 8 Pax", the total number of passengers should be 5 or more.
+If the class does not match any of the specified conditions, the test should raise an error.
+In case of non-compliance, record the error in the "test_errors.txt" file and fail the test.
+Expected Result:
+
+The total number of passengers for each record meets the conditions of the class.
+In case of non-compliance, the test should fail, and error details should be recorded in the "test_errors.txt" file.
+Example After Testing:
+Actual Result:
+
+The total number of passengers for all records met the class conditions.
+No errors were found.
+Status: Passed
+
+
+Test Case: Verify Operator Charges
+Test ID: TC-03
+Test Name: Verify Operator Charges Based on Operator Type
+Description: Verify that the operator charges (Cob_Operador, Cob_Motorista, Cob_Parceiro) meet specific conditions based on the operator type.
+
+Preconditions:
+
+Access to the ATT database.
+Operator data includes fields: ID, Tickets, Operador, Cob_Operador, Cob_Motorista, Cob_Parceiro, Provenincia.
+Test Steps:
+
+Retrieve operator data from the database using the db.get_operador() method.
+For each record:
+Ensure Cob_Operador, Cob_Motorista, and Cob_Parceiro are treated as floats, replacing commas with dots if necessary.
+Check the following conditions based on the Operador value:
+If the Operador contains "&", Cob_Operador should be 0.00.
+If the Operador contains "Alfagar", both Cob_Motorista and Cob_Parceiro should be 0.00.
+If the Operador contains "Alto", both Cob_Motorista and Cob_Parceiro should be 0.00.
+If any of the conditions are not met, record the error and continue checking the next record.
+If there are errors, write them to the "test_errors.txt" file and fail the test.
+Expected Result:
+
+For each record:
+Cob_Operador is 0.00 when Operador contains "&".
+Both Cob_Motorista and Cob_Parceiro are 0.00 when Operador contains "Alfagar" or "Alto".
+In case of non-compliance, the test should fail, and error details should be recorded in the "test_errors.txt" file.
+Example After Testing:
+Actual Result:
+
+All records met the specified conditions for operator charges.
+Status: Passed
+
+
+Test Case: Verify Service Rate by Hour and Category
+Test ID: TC-04
+Test Name: Verify Service Rate for Airport Category During Night Hours
+Description: Verify that the service rate (Val_Servico) for the "Airport" category is not 65.00 or 55.00 during the night hours (00:00 to 07:00).
+
+Preconditions:
+
+Access to the ATT database.
+Rate data includes fields: ID, Hora, Categoria, Val_Servico, Provenincia.
+Test Steps:
+
+Retrieve rate data from the database using the db.get_rate_by_hour() method.
+For each record:
+Ensure Val_Servico is treated as a float, replacing commas with dots if necessary.
+Extract the hour from the Hora field.
+Check the following condition:
+If the Hora is between 00:00 and 07:00 and the Categoria is "Airport", the Val_Servico should not be 65.00 or 55.00.
+If the condition is not met, record the error and continue checking the next record.
+If there are errors, write them to the "test_errors.txt" file and fail the test.
+Expected Result:
+
+For each record:
+If the Hora is between 00:00 and 07:00 and the Categoria is "Airport", the Val_Servico is not 65.00 or 55.00.
+In case of non-compliance, the test should fail, and error details should be recorded in the "test_errors.txt" file.
+Example After Testing:
+Actual Result:
+
+All records met the specified conditions for the service rate during night hours for the "Airport" category.
+Status: Passed
